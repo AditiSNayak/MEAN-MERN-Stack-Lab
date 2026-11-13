@@ -1,0 +1,463 @@
+/* ==========================================
+   AURA — Dark Luxury Login Experience
+   Experiment 2: JavaScript ES6
+========================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* Global Settings */
+
+:root {
+    --background: #101426;
+    --indigo: #242442;
+    --lavender: #a78bfa;
+    --periwinkle: #c7d2fe;
+    --ivory: #f8f7ff;
+    --muted: #a5a7bf;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #080b17;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+/* Main Layout */
+
+.login-container {
+    position: relative;
+    width: min(1120px, 100%);
+    min-height: 690px;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    background: var(--background);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 35px 100px rgba(0,0,0,0.45);
+}
+
+/* ==========================================
+   ABSTRACT ART SECTION
+========================================== */
+
+.art-section {
+    position: relative;
+    overflow: hidden;
+    background: #171a36;
+    isolation: isolate;
+}
+
+.artwork {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 20% 15%,
+            rgba(174,146,255,0.28),
+            transparent 55%
+        ),
+        linear-gradient(145deg, #29254e, #11172e);
+}
+
+.shape {
+    position: absolute;
+    transition: transform 1s ease;
+}
+
+/* Main organic shape */
+
+.shape-one {
+    width: 570px;
+    height: 670px;
+    top: -170px;
+    left: -240px;
+    background: #a78bfa;
+    border-radius: 55% 45% 70% 30% / 45% 65% 35% 55%;
+    transform: rotate(-25deg);
+    box-shadow:
+        0 0 0 35px #35305c,
+        0 0 0 75px #c7d2fe,
+        0 0 0 115px #403966;
+}
+
+/* Secondary organic shape */
+
+.shape-two {
+    width: 460px;
+    height: 510px;
+    right: -260px;
+    top: 120px;
+    background: #6f5da8;
+    border-radius: 70% 30% 40% 60% / 40% 55% 45% 60%;
+    transform: rotate(35deg);
+    box-shadow:
+        0 0 0 35px #c7d2fe,
+        0 0 0 80px #38335f,
+        0 0 0 120px #8974c5;
+}
+
+/* Bottom abstract shape */
+
+.shape-three {
+    width: 460px;
+    height: 420px;
+    bottom: -250px;
+    left: -130px;
+    background: #39345e;
+    border-radius: 65% 35% 60% 40% / 35% 65% 35% 65%;
+    transform: rotate(20deg);
+    box-shadow:
+        0 0 0 30px #b1a1df,
+        0 0 0 75px #201e3e;
+}
+
+/* Decorative circle */
+
+.shape-four {
+    width: 140px;
+    height: 140px;
+    right: 100px;
+    top: 85px;
+    background: #e0d9ff;
+    border-radius: 50%;
+    opacity: 0.85;
+}
+
+/* Artwork overlay */
+
+.artwork::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10,12,28,0.12),
+        rgba(10,12,28,0.1) 40%,
+        rgba(10,12,28,0.65)
+    );
+}
+
+/* Branding */
+
+.art-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    min-height: 690px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px;
+}
+
+.brand {
+    font-family: 'Manrope', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.art-heading h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(32px, 3.4vw, 49px);
+    line-height: 1.17;
+    letter-spacing: -0.045em;
+    margin-bottom: 18px;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.art-heading p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.01em;
+}
+
+/* ==========================================
+   LOGIN FORM SECTION
+========================================== */
+
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 55px;
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(167,139,250,0.12),
+            transparent 40%
+        ),
+        #101426;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 390px;
+    animation: fadeUp 0.8s ease both;
+}
+
+/* Form Heading */
+
+.eyebrow {
+    display: inline-block;
+    color: var(--lavender);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    margin-bottom: 18px;
+}
+
+.form-header h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    line-height: 1.2;
+}
+
+.accent {
+    color: var(--lavender);
+}
+
+.form-header p {
+    margin-top: 13px;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 42px;
+}
+
+/* Input Fields */
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e0deed;
+    margin-bottom: 11px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 54px;
+    padding: 0 17px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.11);
+    border-radius: 11px;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    transition: all 0.25s ease;
+}
+
+.input-group input::placeholder {
+    color: #777a95;
+}
+
+.input-group input:focus {
+    border-color: var(--lavender);
+    background: rgba(167,139,250,0.045);
+    box-shadow: 0 0 0 4px rgba(167,139,250,0.08);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 70px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: var(--lavender);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Form Options */
+
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 0 32px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.remember-me input {
+    accent-color: var(--lavender);
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: var(--lavender);
+    font-size: 12px;
+}
+
+/* Error Message */
+
+.error-message {
+    color: #ff9aa9;
+    font-size: 12px;
+    min-height: 20px;
+    margin-bottom: 10px;
+}
+
+/* Login Button */
+
+.login-button {
+    width: 100%;
+    height: 55px;
+    background: linear-gradient(135deg, #a78bfa, #8267db);
+    border: none;
+    border-radius: 11px;
+    color: #141326;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    transition: all 0.25s ease;
+}
+
+.login-button span {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(167,139,250,0.22);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+
+.form-footer {
+    margin-top: 65px;
+    text-align: center;
+}
+
+.form-footer p {
+    color: #777a95;
+    font-size: 11px;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 850px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .art-section {
+        min-height: 290px;
+    }
+
+    .art-content {
+        min-height: 290px;
+        padding: 30px;
+    }
+
+    .art-heading h1 {
+        font-size: 30px;
+    }
+
+    .form-section {
+        padding: 55px 35px;
+    }
+
+    .form-footer {
+        margin-top: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .login-container {
+        border-radius: 18px;
+    }
+
+    .form-section {
+        padding: 45px 25px;
+    }
+
+    .form-header h2 {
+        font-size: 38px;
+    }
+
+    .art-section,
+    .art-content {
+        min-height: 240px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
